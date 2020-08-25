@@ -39,4 +39,7 @@ target_link_libraries(
     platform_nmofono
     ${DBUSCPP_LIBRARIES}
     ${GLIB_LIBRARIES}
+    ${DEVICEINFO_LDFLAGS}
 )
+
+target_include_directories(${DEVICEINFO_INCLUDE_DIRS})

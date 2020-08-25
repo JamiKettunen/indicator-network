@@ -88,6 +88,8 @@ include_directories(${NM_INCLUDE_DIRS})
 pkg_check_modules(URL_DISPATCHER REQUIRED url-dispatcher-1)
 include_directories(${URL_DISPATCHER_INCLUDE_DIRS})
 
+pkg_check_modules(DEVICEINFO REQUIRED deviceinfo)
+
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 

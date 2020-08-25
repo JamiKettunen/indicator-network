@@ -18,6 +18,7 @@
  *     Marcus Tomlinson <marcus.tomlinson@canonical.com>
  */
 
+//#include <deviceinfo/deviceinfo.h>
 #include <nmofono/manager-impl.h>
 #include <nmofono/connectivity-service-settings.h>
 #include <nmofono/wifi/wifi-link-impl.h>
@@ -509,7 +510,8 @@ ManagerImpl::ManagerImpl(notify::NotificationManager::SPtr notificationManager,
                          KillSwitch::Ptr killSwitch,
                          HotspotManager::SPtr hotspotManager,
                          const QDBusConnection& systemConnection) :
-        d(new ManagerImpl::Private(*this))
+        d(new ManagerImpl::Private(*this)),
+        deviceinfo(std::make_unique<DeviceInfo>())
 {
     d->nm = make_shared<OrgFreedesktopNetworkManagerInterface>(NM_DBUS_SERVICE, NM_DBUS_PATH, systemConnection);
 
@@ -988,6 +990,14 @@ ManagerImpl::setMtkWifiEnabled(bool enabled)
     QFile wmtWifi_file("/dev/wmtWifi");
     if (wmtWifi_file.exists())
     {
+        // Bail out on older MediaTek devices
+        QString currentDevice = QString::fromStdString(deviceinfo->name());
+        qDebug() << "setMtkWifiEnabled() -> Running on a '" << currentDevice << "'";
+
+        QList<QString> avoidDevices = { "frieza", "cooler", "krillin", "vegetahd", "tenshi", "arale", "turbo" };
+        if (avoidDevices.indexOf(currentDevice) != -1)
+            return;
+
         if (wmtWifi_file.open(QIODevice::WriteOnly)) {
             // Configure new adapter enabled state
             const char newAdapterEnabledState = (enabled ? '1' : '0');
