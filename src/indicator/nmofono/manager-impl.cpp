@@ -18,7 +18,7 @@
  *     Marcus Tomlinson <marcus.tomlinson@canonical.com>
  */
 
-#include <deviceinfo.h>
+#include <deviceinfo/deviceinfo.h>
 #include <nmofono/manager-impl.h>
 #include <nmofono/connectivity-service-settings.h>
 #include <nmofono/wifi/wifi-link-impl.h>
@@ -991,6 +991,7 @@ ManagerImpl::setMtkWifiEnabled(bool enabled)
     if (wmtWifi_file.exists())
     {
         // Bail out on older MediaTek devices
+        //deviceinfo = std::make_unique<DeviceInfo>(); // deviceinfo(std::make_unique<DeviceInfo>());
         QString currentDevice = QString::fromStdString(deviceinfo->name());
         qDebug() << "setMtkWifiEnabled() -> Running on a '" << currentDevice << "'";
 

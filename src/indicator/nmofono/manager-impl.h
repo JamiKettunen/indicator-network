@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include <deviceinfo.h>
+#include <deviceinfo/deviceinfo.h>
 #include <memory>
 #include <nmofono/manager.h>
 #include <nmofono/kill-switch.h>
