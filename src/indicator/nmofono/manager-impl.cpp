@@ -18,7 +18,7 @@
  *     Marcus Tomlinson <marcus.tomlinson@canonical.com>
  */
 
-//#include <deviceinfo/deviceinfo.h>
+#include <deviceinfo.h>
 #include <nmofono/manager-impl.h>
 #include <nmofono/connectivity-service-settings.h>
 #include <nmofono/wifi/wifi-link-impl.h>

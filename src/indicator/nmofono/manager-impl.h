@@ -19,8 +19,8 @@
 
 #pragma once
 
+#include <deviceinfo.h>
 #include <memory>
-#include <deviceinfo/deviceinfo.h>
 #include <nmofono/manager.h>
 #include <nmofono/kill-switch.h>
 #include <nmofono/hotspot-manager.h>
