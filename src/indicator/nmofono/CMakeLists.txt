@@ -42,4 +42,4 @@ target_link_libraries(
     ${DEVICEINFO_LDFLAGS}
 )
 
-target_include_directories(${DEVICEINFO_INCLUDE_DIRS})
+target_include_directories(platform_nmofono ${DEVICEINFO_INCLUDE_DIRS})
